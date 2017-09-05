@@ -1,0 +1,18 @@
+<div class="card search">
+  <h1 class="search-headline">Course Registration</h1>
+  <label class="search-label" >search for course: <span *ngIf='course' [innerHTML] = course ></span> </label>
+  <input type="text" [(ngModel)]='course' value='course' class='search-input'>
+</div><!-- card search -->
+
+<ul class='courselist cf' *ngIf='course'>
+  <li class='courselist-item cf' *ngFor='let item of (courses | search: course )' >
+    <h2 class='course-name'
+    (click) = 'this.showSection()' 
+    [ngClass] = '{"active": display }'
+    >{{ item }}</h2>
+    <theForm *ngIf='display'></theForm>
+  </li>
+</ul>
+
+
+

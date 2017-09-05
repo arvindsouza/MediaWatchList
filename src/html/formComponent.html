@@ -1,0 +1,9 @@
+<div id='FormContainer'>
+ <form id='reg' [formGroup]='form' >
+        <input formControlName='name' type='text' placeholder="Name" >
+        <label class ='Error' *ngIf='form.controls.name.errors' >hi</label>
+        <input   formControlName='emails' type="text" placeholder="E-mail" >
+        <label class='Error' *ngIf='form.controls.emails.errors?.email'>Invalid e-mail</label>
+        <button [disabled]='!form.valid'  >Sign Up</button>
+ </form>
+</div>
