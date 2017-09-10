@@ -7,16 +7,11 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   styleUrls: ['../css/app.component.css'],
   animations: [
     trigger('heroState', [
-      state('inactive', style({
-        backgroundColor: '#eee',
-        transform: 'scale(1)'
+      state('pin', style({
+        opacity: 1
       })),
-      state('active',   style({
-        backgroundColor: '#cfd8dc',
-        transform: 'scale(1.1)'
-      })),
-      transition('inactive => active', animate('100ms ease-in')),
-      transition('active => inactive', animate('100ms ease-out'))
+      transition('void => *', [style({ opacity:0 }), animate('100ms 50ms')]),
+      transition('* => void', [animate('100ms'), style({ opacity:0 })])
     ])
   ]
 })
@@ -29,7 +24,8 @@ export class AppComponent {
   course: string;
   state: string = 'inactive';
   courses: any;
-  display: boolean = false;
+
+  public selectedItem: string;
 
   constructor(){
 
@@ -38,16 +34,10 @@ export class AppComponent {
     ]
   }
 
-  showSection(item){
-    this.display = !this.display;
+  onSelect(item: string){
+    this.selectedItem = item;
   }
 
-  togglestate(){
-    if(this.state == 'inactive')
-      this.state = 'active';
-    else
-      this.state = 'inactive'
-  }
 }
 
 

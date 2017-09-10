@@ -58,23 +58,24 @@
   .courselist-item {
     padding: 10px 10px 0 10px;
     border-bottom: 1px solid #999;
-    opacity: .9;
     transition: all 0.3s ease-out;
     padding: 10px;
   }
-  
-  .courselist-item:hover {
-    cursor: pointer;
-    background-color: #FDF6E3;
-    opacity: 1;
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-  
+
   .courselist-item:last-child  {
       border-bottom:none;
+  }
+
+  .courselist-item:hover{
+     background-color: #bbb;
+     transform: scale(1.1);
+     cursor: pointer;
+  }
+
+  .clicked:hover{
+  background: white;
+  transform: none;
+  cursor: default;
   }
   
   /* ---------------------- */
