@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { SearchPipe } from './pipe.search';
 import { FormComponent } from './form.component'
 
+import 'rxjs/add/operator/toPromise';
+
 @NgModule({
   declarations: [
     AppComponent, SearchPipe, FormComponent

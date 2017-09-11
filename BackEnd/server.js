@@ -5,6 +5,8 @@ var mongo = require('mongodb').MongoClient;
 
 var database;
 
+var messages = [ {'name': 'jim'}] ;
+
 app.use(bodyParser.json());
 
 app.use(function(req, res, next){
@@ -15,9 +17,16 @@ app.use(function(req, res, next){
 
 app.post('/api/message', function(req, res){
     console.log(req.body);
-    database.collection('messages').insertOne({ 'potato' :'hello'});
-    res.status(200);
+    //res.sendStatus(200);
+    database.collection('messages').insertOne(req.body);
+    //res.json(messages);
 })
+
+
+app.get('/api/messages', function(req, res){
+    res.json(messages);
+})
+
 
 mongo.connect('mongodb://localhost:27017/test', function(err, db){
     console.log('Connected to DB');

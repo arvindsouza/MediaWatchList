@@ -6,7 +6,7 @@ import { Http } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 @Component({
     selector: 'theForm',
@@ -23,11 +23,16 @@ import 'rxjs/add/operator/map';
     ]
 })
 
-@Injectable()
+
 export class FormComponent{
 
     form: FormGroup;
     display: boolean = true;
+
+    message = {
+        'name':'',
+        'something':''
+    }
 
     constructor(
         @Inject(FormBuilder) fb: FormBuilder,
@@ -43,13 +48,7 @@ export class FormComponent{
      onSubmit(value){
       console.log(value);
       this.display = false;
-
-      return this.http.post('http://localhost:5000/api/message', value).map(
-          Response => {
-              return Response.json().value;
-          }
-      )
-      .subscribe(res => console.log('ih'), er => console.log('error')) ;
-    
+        this.message.name = value.name;
+       this.http.post('http://localhost:5000/api/message', this.message).toPromise();
     }
 }
