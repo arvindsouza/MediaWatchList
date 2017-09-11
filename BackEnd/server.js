@@ -34,6 +34,12 @@ mongo.connect('mongodb://localhost:27017/test', function(err, db){
    db.collection('messages').insertOne({ 'msg' :'hi'});
 })
 
+mongo.connect('mongodb://localhost:27017/secondtest', function(err, db2){
+    console.log('Connected to DB');
+    database = db;
+   db.collection('messages').insertOne({ 'msg' :'hi2'});
+})
+
 var server = app.listen(5000, function(){
     console.log('lISTENING', server.address().port);
 })
