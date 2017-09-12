@@ -1,0 +1,12 @@
+
+<ul class='contentList'>
+  <li class='mediaBoxes' *ngFor='let item of media' >
+    <h1>{{ item.name }}</h1>
+    <h1>{{ item.category }}</h1>
+    <h1 class='test' > {{ item.stat }} </h1>
+    <div class='customCheckbox'>
+    <input type="checkbox" value='1' name='statuses' [(ngModel)]='item.status' (click)='statusChange(item)'>
+    <span></span>
+    </div>
+  </li>
+</ul>

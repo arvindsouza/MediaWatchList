@@ -1,20 +1,14 @@
-<div class="card search">
-  <h1 class="search-headline"  >Course Registration</h1>
-  <label class="search-label" >Search for Course: <span *ngIf='course' [innerHTML] = course ></span> </label>
-  <input type="text" [(ngModel)]='course' value='course' class='search-input' >
-</div><!-- card search -->
+<div id='nav'>
+  <ul class='options'>
+    <li><a routerLink='/Movies' >Movies</a></li>
+    <li><a routerLink='/TV' >TV</a></li>
+    <li><a routerLink='/Games' >Games</a></li>
+    <li><a routerLink='/add' >Add</a></li>
+  </ul>
+</div>
 
-<ul class='courselist cf' *ngIf='course' [@heroState] = 'pin' >
-  <li class='courselist-item' *ngFor='let item of (courses | search: course )' 
-  [ngClass] = '{ "clicked": item===selectedItem }'>
-    <h2 class='course-name' 
-    (click) = 'onSelect(item);'
-    >{{ item }}</h2>
-    <theForm *ngIf='item===selectedItem'></theForm>
-  </li>
-</ul>
-
-
-
+<div id='mainApp'>
+<router-outlet></router-outlet>
+</div>
 
 

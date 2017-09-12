@@ -6,6 +6,8 @@ import { Http } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { MediaService } from './mediaItems.service';
+
 import 'rxjs/add/operator/toPromise';
 
 @Component({
@@ -36,7 +38,8 @@ export class FormComponent{
 
     constructor(
         @Inject(FormBuilder) fb: FormBuilder,
-        private http: Http
+        private http: Http,
+        private mediaservice: MediaService
     ){
         this.form = fb.group({
             name: ['', Validators.required],
@@ -50,5 +53,6 @@ export class FormComponent{
       this.display = false;
         this.message.name = value.name;
        this.http.post('http://localhost:5000/api/message', this.message).toPromise();
+       this.mediaservice.add(value);
     }
 }

@@ -23,16 +23,10 @@ export class AppComponent {
 
   course: string;
   state: string = 'inactive';
-  courses: any;
 
   public selectedItem: string;
 
-  constructor(){
-
-    this.courses = [
-      'Maths', 'Science', 'History'
-    ]
-  }
+  
 
   onSelect(item: string){
     this.selectedItem = item;

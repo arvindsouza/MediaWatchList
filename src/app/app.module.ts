@@ -3,21 +3,25 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
+import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { SearchPipe } from './pipe.search';
 import { FormComponent } from './form.component'
+import { MediaList } from './media.component';
+
+import { MediaService } from './mediaItems.service';
 
 import 'rxjs/add/operator/toPromise';
 
 @NgModule({
   declarations: [
-    AppComponent, SearchPipe, FormComponent
+    AppComponent, SearchPipe, FormComponent, MediaList
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule, HttpModule
+    BrowserModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule, HttpModule, routing
   ],
-  providers: [],
+  providers: [ MediaService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

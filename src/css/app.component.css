@@ -1,108 +1,33 @@
-/* -------------- */
-/* app.css Styles */
-/* -------------- */
+:host{
+  display: flex;
+  height: 100%;
+}
 
-.search {
-    width: 100%;
-    font-weight: 300;
-    margin: 0 auto;
-    margin-top: 30px;
-    padding: 20px 30px;
-    z-index: 20;
-    text-align: center;
-  }
-  
-  .search .search-headline {
-    margin-bottom: 10px;
-  }
-  
-  .search .search-label {
-    font-weight: 400;
-    font-size: 1rem;
-    text-align: center;
-    font-family: inherit;
-  }
-  
-  .search .search-input {
-    width: 100%;
-    display: block;
-    max-width: 1000px;
-    font-weight: 100;
-    font-size: 1.3rem;
-    color: #475B62;
-    border: 1px solid #C5C5C5;
-    border-radius: 4px;
-    outline: 0;
-    padding: 20px;
-    margin: 0 auto;
-  }
-  
-  /* ------------------ */
-  /* course List Styles */
-  /* ------------------ */
-  
-  .courselist {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    right: 0;
-    margin-bottom: 30px;
-    background: white;
-    box-shadow: 0 1px 0 rgba(0,0,0,.25);
-    z-index: 10;
-    margin: 0 auto;
-    padding: 0;
-    text-align: center;
-  }
-  
-  .courselist-item {
-    padding: 10px 10px 0 10px;
-    border-bottom: 1px solid #999;
-    transition: all 0.3s ease-out;
-    padding: 10px;
-  }
+#nav{
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  background-color: orange;
+  height: 100%;
+}
 
-  .courselist-item:last-child  {
-      border-bottom:none;
-  }
+#mainApp{
+  background-color: grey;
+  width: 100%;
+}
 
-  .courselist-item:hover{
-     background-color: #bbb;
-     transform: scale(1.1);
-     cursor: pointer;
-  }
+.options{
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
 
-  .clicked:hover{
-  background: white;
-  transform: none;
-  cursor: default;
-  }
+li{
+  padding: 20px;
+}
+
+a{
+  text-decoration: none;
   
-  /* ---------------------- */
-  /* Course-item.css Styles */
-  /* ---------------------- */
-  
-  .course-img {
-    width: 60px;
-    border-radius: 12px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    float: left;
-  }
-  
-  .course-info {
-    display: block;
-    margin: 5px 0;
-  }
-  
-  .course-info .course-name {
-    font-size: 1.4rem; 
-    margin-top: 0;
-  }
-  
-  .course-info .course-reknown {
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin-top: 0;
-  }
-  
+}
+

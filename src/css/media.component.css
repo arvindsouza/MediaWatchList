@@ -1,0 +1,43 @@
+.mediaBoxes{
+    display: flex;
+    width: 200px;
+    height: 250px;
+    flex-direction: column;
+    background: red;
+    border: black;
+    border-style: solid;
+    margin: 10px;
+    padding: 10px;
+    }
+    
+    .contentList{
+      display: flex;
+      flex-direction: row;
+      padding: 0;
+    }
+    
+    input[type=checkbox]{
+      margin: 0 0 0 10px;
+    }
+
+    span{
+        width: 15px;
+        height: 15px;
+        background-color: wheat;
+        display: block;
+        position: absolute;
+        top: 0;
+    }
+
+    span::after{
+        content: 's';
+    }
+
+    .customCheckbox{
+        display: block;
+        position: relative;
+    }
+
+    input[type=checkbox]:checked + span:after{
+        content: 'c';
+    }
