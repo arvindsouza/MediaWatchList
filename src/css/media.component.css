@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Acme|Open+Sans|Work+Sans');
+
 .mediaBoxes{
     display: flex;
     width: 200px;
@@ -40,4 +42,21 @@
 
     input[type=checkbox]:checked + span:after{
         content: 'c';
+    }
+
+    h1{
+        font-family: 'acme', sans-serif;
+        font-weight: normal;
+        margin-bottom: 1px;
+    }
+
+    h2{
+        font-size: 15px;
+        font-weight: normal;
+        font-family: 'Work-Sans', sans-serif;
+        border-bottom-style: solid;
+        border-width: 1px;
+        border-bottom-color: #fff;
+        margin-top: 0px;
+        padding-bottom: 10px;
     }

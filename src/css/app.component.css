@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Acme|Open+Sans|Work+Sans');
+
 :host{
   display: flex;
   height: 100%;
@@ -28,6 +30,6 @@ li{
 
 a{
   text-decoration: none;
-  
+
 }
 
