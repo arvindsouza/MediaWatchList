@@ -14,7 +14,7 @@
 }
 
 #mainApp{
-  background-color: grey;
+  background-color:#193A82;
   width: 100%;
 }
 
@@ -30,6 +30,12 @@ li{
 
 a{
   text-decoration: none;
-
 }
 
+img{
+  width: 60px;
+  -webkit-transition: .1s all;
+}
+img:hover{
+  width: 65px;
+}

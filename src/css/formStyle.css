@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Acme|Open+Sans|Work+Sans');
+
+input{
+    padding: 10px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+select{
+ margin-bottom: 50px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    
+}
+
+#FormContainer{
+    display: block;
+    padding-left: 20px;
+    margin-top: 50px;
+}
+
+span{
+    font-size: 30px;
+    padding-bottom: 10px;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.underline{
+    background-color: #fff;
+    height: 2px;
+    padding: 0; 
+}
+
+.Title{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}

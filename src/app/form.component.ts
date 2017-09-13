@@ -43,14 +43,12 @@ export class FormComponent{
     ){
         this.form = fb.group({
             name: ['', Validators.required],
-            last: [''],
-            emails: ['', Validators.email]
+            category: [''],
         })
      }
 
      onSubmit(value){
-      console.log(value);
-      this.display = false;
+      //this.display = false;
         this.message.name = value.name;
        this.http.post('http://localhost:5000/api/message', this.message).toPromise();
        this.mediaservice.add(value);

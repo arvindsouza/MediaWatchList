@@ -5,11 +5,12 @@
     width: 200px;
     height: 250px;
     flex-direction: column;
-    background: red;
-    border: black;
+    background: #0B9B64;
+    border: white;
     border-style: solid;
     margin: 10px;
     padding: 10px;
+    color: #fff;
     }
     
     .contentList{

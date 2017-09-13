@@ -1,8 +1,17 @@
 <div id='FormContainer' [@Init]='one' *ngIf='display'>
+
+ <div class='Title'>
+  <span>Add a new Item</span>
+  <span class='underline'></span>
+ </div>
+
  <form id='reg' [formGroup]='form' (ngSubmit)='onSubmit(form.value)' >
         <input formControlName='name' type='text' placeholder="Name" >
-        <label class='Error' *ngIf='form.controls.name.errors'>Enter Name</label>
-        
+        <select formControlName='category' >
+            <option value="Movie">Movie</option>
+            <option value='TV'>TV</option>
+            <option value="Game" >Game</option>
+        </select>
         <button>Add</button>
  </form>
 </div>
