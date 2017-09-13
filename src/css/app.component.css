@@ -16,6 +16,7 @@
 #mainApp{
   background-color:#193A82;
   width: 100%;
+  overflow: scroll;
 }
 
 .options{

@@ -5,7 +5,20 @@ var mongo = require('mongodb').MongoClient;
 
 var database;
 
-var messages = [ {'name': 'jim'}] ;
+var messages = [
+    {
+      'name': 'IT',
+      'category':'Movie',
+      'status':false,
+      'stat': 'played'
+    },
+    {
+      'name':'Hellblade',
+      'category': 'Game',
+      'status': false,
+      'stat': 'played'
+    }
+  ] ;
 
 app.use(bodyParser.json());
 
@@ -24,21 +37,18 @@ app.post('/api/message', function(req, res){
 
 
 app.get('/api/messages', function(req, res){
-    res.json(messages);
+    database.collection('messages').find().toArray(function(err, arr){
+        res.json(arr);
+    })   
 })
+
 
 
 mongo.connect('mongodb://localhost:27017/test', function(err, db){
     console.log('Connected to DB');
     database = db;
-   db.collection('messages').insertOne({ 'msg' :'hi'});
 })
 
-mongo.connect('mongodb://localhost:27017/secondtest', function(err, db2){
-    console.log('Connected to DB');
-    database = db;
-   db.collection('messages').insertOne({ 'msg' :'hi2'});
-})
 
 var server = app.listen(5000, function(){
     console.log('lISTENING', server.address().port);

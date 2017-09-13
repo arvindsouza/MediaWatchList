@@ -11,13 +11,13 @@ import { MediaService } from './mediaItems.service';
 
 export class MediaList{
 
-    media: any;
+    public media: any;
 
     constructor(private activatedroute: ActivatedRoute,
     private mediaitemservice: MediaService
     ){ }
 
-    ngOnInit(){
+    async ngOnInit(){
         this.activatedroute.params.subscribe(
             params =>{
               let medium = params['medium'];
@@ -27,7 +27,9 @@ export class MediaList{
             }
         );
 
-        this.media = this.mediaitemservice.get();
+        var response = await this.mediaitemservice.get();
+
+        this.media = response.json(); 
     }  
     
     statusChange(value){
@@ -36,4 +38,6 @@ export class MediaList{
         else
             value.stat = 'not done';
     }
+
+   
 }

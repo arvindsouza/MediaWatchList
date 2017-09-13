@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { MediaList } from './media.component';
 
 import { MediaService } from './mediaItems.service';
 
@@ -30,6 +31,7 @@ export class FormComponent{
 
     form: FormGroup;
     display: boolean = true;
+    medialist: MediaList;
 
     message = {
         'name':'',
@@ -47,10 +49,9 @@ export class FormComponent{
         })
      }
 
-     onSubmit(value){
-      //this.display = false;
-        this.message.name = value.name;
-       this.http.post('http://localhost:5000/api/message', this.message).toPromise();
-       this.mediaservice.add(value);
+     async onSubmit(value){
+      //this.display = false;  
+      this.mediaservice.add(value);
+      
     }
 }
