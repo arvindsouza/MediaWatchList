@@ -9,7 +9,7 @@ export class MediaService{
     media: any;
 
     get(){
-        this.media = this.http.get('http://localhost:5000/api/messages').toPromise();        
+        this.media = this.http.get('http://localhost:5000/api/messages').toPromise();      
         return this.media;
     }
 
@@ -19,7 +19,7 @@ export class MediaService{
     }
 
     delete(mediaitem){
-
+        this.http.post('http://localhost:5000/api/delete', mediaitem).toPromise();        
     }
 
     constructor(

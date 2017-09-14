@@ -12,7 +12,7 @@ import { MediaService } from './mediaItems.service';
 export class MediaList{
 
     public media: any;
-
+    
     constructor(private activatedroute: ActivatedRoute,
     private mediaitemservice: MediaService
     ){ }
@@ -27,7 +27,7 @@ export class MediaList{
             }
         );
 
-        var response = await this.mediaitemservice.get();
+        var response =  await this.mediaitemservice.get();
 
         this.media = response.json(); 
     }  
@@ -37,6 +37,11 @@ export class MediaList{
          value.stat = 'done';
         else
             value.stat = 'not done';
+    }
+
+     async Delete(value){
+        this.mediaitemservice.delete(value);
+          console.log(this.media); 
     }
 
    

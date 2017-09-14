@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongo = require('mongodb').MongoClient;
+var objid = require('mongodb').ObjectID;
 
 var database;
 
@@ -40,6 +41,13 @@ app.get('/api/messages', function(req, res){
     database.collection('messages').find().toArray(function(err, arr){
         res.json(arr);
     })   
+})
+
+app.post('/api/delete', function(req, res){
+    console.log(req.body._id);
+     database.collection('messages').deleteOne({_id: objid(req.body._id) }, function(err, obj){
+    console.log(obj.result.n); 
+    });
 })
 
 
