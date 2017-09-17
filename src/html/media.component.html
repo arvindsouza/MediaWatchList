@@ -6,7 +6,7 @@
 </div>
 
 <ul class='contentList'>
-  <li class='mediaBoxes' *ngFor='let item of (mediaFiltered ) '  [ngClass] = "{'test': $index == clickedindex}">
+  <li class='mediaBoxes' *ngFor='let item of (mediaFiltered | search: keyword) '  [ngClass] = "{'test': $index == clickedindex}">
     <h1>{{ item.name }}</h1>
     <h2>{{ item.category }}</h2>
     <div class='buttons'>

@@ -6,9 +6,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class SearchPipe implements PipeTransform{
     transform(pipeData, pipeModifier) {
-        console.log(pipeData.json());
+        if(pipeData){        
        return pipeData.filter((eachItem)=> {
+           if(pipeModifier)
              return eachItem['name'].toLowerCase().includes(pipeModifier.toLowerCase());
+             else
+             return pipeData;
         });
     }
+  }
 }

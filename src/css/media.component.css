@@ -3,7 +3,6 @@
 .mediaBoxes{
     display: flex;
     width: 200px;
-    height: 250px;
     flex-direction: column;
     background: #0B9B64;
     border: white;
@@ -109,23 +108,27 @@
         position: absolute;
         width: 100px;
         right: 0;
-        padding: 40px;
+        padding: 40px 40px 0 40px;
         height: 45px;
+        animation: search;
+        animation-duration: 4s;
+        animation-fill-mode: forwards;
+        opacity: 0;
     }
 
     .searchIcon{
         position: absolute;
         background-image: url('../assets/SearchIcons/AppIcons_SearchA.png');
-        width: 100px;
-        height: 43px;
-        background-size: contain;
+        width: 60px;
+        height: 60px;
+        background-size: cover;
         z-index: 102;
     }
 
     .searchbox{
-        top: 5px;
+        top: 15px;
         width:10px;
-        left:65px;
+        left:20px;
         height: 25px;
         position: relative;
         z-index: 101;
@@ -134,20 +137,34 @@
         border-color: #D36F0B;
         background-color: #EF913C;
         transition: 0.2s all;
+        color: #fff;        
     }
 
-    .search:hover, .searchIcon:hover{
+    .searchIcon:hover{
        cursor: pointer;
     }
 
-    .search:hover .searchbox{
+    .searchIcon:hover~.searchbox{
         width: 150px;
-        left:-65px;
+        left:-120px;
+    }
+
+    .searchbox:hover{
+        width: 150px;
+        left:-120px;
     }
 
     .searchbox:focus{
         width: 150px;
-        left:-65px;
+        left:-120px;
         outline: none;
     }
 
+    @keyframes search{
+        0% { opacity: 0}
+        100% { opacity: 1 }
+    }
+
+    @media screen and ( min-width: 768px ){
+        
+    }

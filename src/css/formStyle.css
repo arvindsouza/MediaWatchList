@@ -2,7 +2,7 @@
 
 
 :host{
-    display: block !important;
+    display: flex !important;
 }
 
 input{
@@ -46,6 +46,7 @@ form{
     display: block;
     padding-left: 20px;
     margin-top: 50px;
+    min-width: 100%;
 }
 
 span{
@@ -59,7 +60,16 @@ span{
     background-color: #fff;
     height: 4px;
     padding: 0; 
-    width: 95%;
+    width: 0;
+    opacity: 0;
+    animation: underline;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;   
+}
+
+@keyframes underline{
+    0% { width:0%; opacity: 0; }
+    100%{ width:95%; opacity: 1; }
 }
 
 .Title{

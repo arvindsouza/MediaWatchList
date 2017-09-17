@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router'
   animations: [
     trigger('routerTransition', [
       transition('*<=>*', [
-        query(':enter, :leave', style({position: 'fixed', width: '100%'}), { optional: true }),
+        query(':enter, :leave', style({position: 'fixed'}), { optional: true }),
         group([
           query(':enter', [style({ transform: 'translateX(5%)', opacity: 0 }), 
         animate('0.5s ease-in-out', style({ transform: 'translateX(0%)', opacity: 1 }))], { optional: true }),
