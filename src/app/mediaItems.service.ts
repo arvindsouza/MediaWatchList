@@ -1,4 +1,4 @@
-import { Http } from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
@@ -18,8 +18,16 @@ export class MediaService{
        this.http.post('http://localhost:5000/api/message', mediaitem).toPromise();
     }
 
-    delete(mediaitem){
-        this.http.post('http://localhost:5000/api/delete', mediaitem).toPromise();        
+    async delete(mediaitem){
+       await this.http.post('http://localhost:5000/api/delete', mediaitem).toPromise(); 
+        this.media = this.http.get('http://localhost:5000/api/messages').toPromise();      
+        return this.media;       
+    }
+
+    async update(mediaitem){
+        await this.http.post('http://localhost:5000/api/update', mediaitem).toPromise();  
+        this.media = this.http.get('http://localhost:5000/api/messages').toPromise();      
+        return this.media;
     }
 
     constructor(

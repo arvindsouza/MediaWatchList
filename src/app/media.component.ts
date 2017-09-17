@@ -11,37 +11,59 @@ import { MediaService } from './mediaItems.service';
 
 export class MediaList{
 
-    public media: any;
+    media: any;
+    medium: any;
+    mediaFiltered: any;
+    response: any;
+    clickedindex: any;
     
     constructor(private activatedroute: ActivatedRoute,
     private mediaitemservice: MediaService
     ){ }
 
     async ngOnInit(){
+        this.response =  await this.mediaitemservice.get();
+        this.media = this.response.json(); 
         this.activatedroute.params.subscribe(
             params =>{
-              let medium = params['medium'];
-              if(medium.toLowerCase()=='all'){
-                  medium = '';
+               this.medium = params['medium'];
+              if(this.medium.toLowerCase()=='all'){
+                  this.medium = '';
+              }
+              //Change contents based on category selection
+            if(this.medium != ''){
+                 this.mediaFiltered =this.response.json(); 
+                 var i = 0;
+                 while(i<this.mediaFiltered.length){
+                   if(this.mediaFiltered[i].category != this.medium ){
+                       console.log(this.mediaFiltered[i].status +(this.mediaFiltered[i].name) + 'counter: '+ i );
+                       let index = this.mediaFiltered.indexOf(this.mediaFiltered[i]);
+                       this.mediaFiltered.splice(index,1);
+                     
+                   }
+                   else
+                     i++;  
+                }
+              }
+              else{
+                  this.mediaFiltered = this.response.json();            
               }
             }
         );
 
-        var response =  await this.mediaitemservice.get();
-
-        this.media = response.json(); 
+        
     }  
     
-    statusChange(value){
-        if (value.status == false)
-         value.stat = 'done';
-        else
-            value.stat = 'not done';
+   async statusChange(value){
+        value.status= !value.status;
+        this.response =  await this.mediaitemservice.update(value);
     }
 
      async Delete(value){
-        this.mediaitemservice.delete(value);
-          console.log(this.media); 
+        this.response = await this.mediaitemservice.delete(value);
+        let index = this.mediaFiltered.indexOf(value);
+        this.clickedindex = index;
+        this.mediaFiltered.splice(index,1);
     }
 
    

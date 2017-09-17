@@ -21,29 +21,38 @@
     }
     
     input[type=checkbox]{
-      margin: 0 0 0 10px;
+      width: 50px;
+      height: 50px;
+      z-index: 100;
+      position: relative;
+      opacity: 0;
     }
 
     span{
-        width: 15px;
-        height: 15px;
-        background-color: wheat;
+        width: 50px;
+        height: 50px;
         display: block;
         position: absolute;
         top: 0;
+        background-image: url('../assets/AppIcons_Checkbox.png');
+        background-size: contain; 
+        opacity: 0.5;    
+        transition: 0.5s all;
+        margin-top: 10px;
     }
 
-    span::after{
-        content: 's';
+    input[type=checkbox]:hover{
+        cursor: pointer;
     }
 
     .customCheckbox{
+        width: 50px;
         display: block;
         position: relative;
     }
 
-    input[type=checkbox]:checked + span:after{
-        content: 'c';
+    input[type=checkbox]:checked ~ span{
+      opacity: 1;
     }
 
     h1{
@@ -61,4 +70,32 @@
         border-bottom-color: #fff;
         margin-top: 0px;
         padding-bottom: 10px;
+    }
+
+    .delete{
+        background-image:url('../assets/AppIcons_Trash.png');
+        width: 60px;
+        height: 85px;
+        background-size: cover;
+        transition: 0.2s all;
+    }
+    
+    .delete:hover{
+        cursor: pointer;
+        animation-name: trash;
+        animation-duration: .4s;
+        animation-iteration-count: 2;
+    }
+
+    .buttons{
+        display: flex;
+        flex-direction: row;
+        justify-content:space-around;
+    }
+
+    @keyframes trash{
+        0% { background-image: url('../assets/AppIcons_Trash.png'); }
+        25% { background-image: url('../assets/AppIcons_TrashLeft.png'); }
+        75% { background-image: url('../assets/AppIcons_Trash.png'); }
+       100% { background-image: url('../assets/AppIcons_TrashRight.png'); }
     }

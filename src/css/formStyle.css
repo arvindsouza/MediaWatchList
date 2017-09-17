@@ -1,14 +1,38 @@
 @import url('https://fonts.googleapis.com/css?family=Acme|Open+Sans|Work+Sans');
 
+
+:host{
+    display: block !important;
+}
+
 input{
     padding: 10px;
     margin-bottom: 50px;
     margin-top: 50px;
-    
+    border: solid;
+    border-color: #fff;
+    border-radius: 10px;
+    background-color: #1F68DD;
+    color: #fff;
+    opacity: 0.8;
+}
+
+input:focus, select:focus, button:focus{
+ outline: none;
+}
+
+::-webkit-input-placeholder{
+    color:#fff;
 }
 
 select{
  margin-bottom: 50px;
+ border: solid;
+ border-color: #fff;
+ border-radius: 10px;
+ background-color: #1F68DD;
+ color: #fff;
+ opacity: 0.8;
 }
 
 form{
@@ -25,19 +49,39 @@ form{
 }
 
 span{
-    font-size: 30px;
+    font-size: 40px;
     padding-bottom: 10px;
     font-family: 'Work Sans', sans-serif;
+    color: #fff;
 }
 
 .underline{
     background-color: #fff;
-    height: 2px;
+    height: 4px;
     padding: 0; 
+    width: 95%;
 }
 
 .Title{
     display: flex;
     flex-direction: column;
-    width: 500px;
+    width: 100%;
+}
+
+button{
+    width: 80px;
+    margin:0 auto;
+    height: 30px;
+    border-radius: 10px;
+    border: solid;
+    border-color: #fff;
+    background-color: #1F68DD;
+    color: #fff;
+    opacity: 0.8;
+    transition: 0.3s all;
+}
+
+button:hover{
+    opacity: .6;
+    cursor: pointer;
 }
