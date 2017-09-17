@@ -30,24 +30,36 @@ app.use(function(req, res, next){
 })
 
 app.post('/api/message', function(req, res){
-    console.log(req.body);
     //res.sendStatus(200);
-    database.collection('messages').insertOne(req.body);
-    //res.json(messages);
+    database.collection('messages').insertOne(req.body, function(err, obj){
+        if(!err)
+        console.log(req.body);
+        else
+        console.log('Error!');
+    });
+    res.json(req.body);
 })
 
 
 app.get('/api/messages', function(req, res){
     database.collection('messages').find().toArray(function(err, arr){
+        if(!err)
         res.json(arr);
+        else
+        console.log('Error!');
     })   
 })
 
 app.post('/api/delete', function(req, res){
     console.log(req.body._id);
-     database.collection('messages').deleteOne({_id: objid(req.body._id) }, function(err, obj){
+     database.collection('messages').remove({_id: objid(req.body._id) }, function(err, obj){
+         if(!err)
     console.log(obj.result.n); 
+    else
+    console.log(err + 'error');
     });
+    res.json(req.body);
+    
 })
 
 

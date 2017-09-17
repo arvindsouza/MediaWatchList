@@ -30,6 +30,8 @@ export class MediaList{
         var response =  await this.mediaitemservice.get();
 
         this.media = response.json(); 
+        console.log('display me');
+        console.log(this.media);
     }  
     
     statusChange(value){
@@ -39,9 +41,12 @@ export class MediaList{
             value.stat = 'not done';
     }
 
-     async Delete(value){
+      async Delete(value){
+         // console.log('delete'+value.name);
         this.mediaitemservice.delete(value);
-          console.log(this.media); 
+        var response =  await this.mediaitemservice.get();
+        this.media = response.json(); 
+        console.log(this.media+' Trial'); 
     }
 
    

@@ -19,7 +19,10 @@ export class MediaService{
     }
 
     delete(mediaitem){
-        this.http.post('http://localhost:5000/api/delete', mediaitem).toPromise();        
+        console.log(mediaitem.name + 'deleted')
+        this.http.post('http://localhost:5000/api/delete', mediaitem).toPromise(); 
+       // this.media = this.http.get('http://localhost:5000/api/messages').toPromise();  
+       // let index = this.media.indexOf(mediaitem);
     }
 
     constructor(
