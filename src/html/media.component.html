@@ -1,12 +1,20 @@
 
+<div class='search'>
+  <div class='searchIcon'></div>
+  <input class='searchbox' [(ngModel)]='keyword' >    
+  <label>{{ keyword }}</label>
+</div>
+
 <ul class='contentList'>
-  <li class='mediaBoxes' *ngFor='let item of media'  >
+  <li class='mediaBoxes' *ngFor='let item of (mediaFiltered ) '  [ngClass] = "{'test': $index == clickedindex}">
     <h1>{{ item.name }}</h1>
     <h2>{{ item.category }}</h2>
-    <div class='customCheckbox'>
-    <input type="checkbox" value='1' name='statuses' [(ngModel)]='item.status' (click)='statusChange(item)'>
-    <span></span>
-    <div class='delete' (click)='Delete(item)'>Delete</div>
+    <div class='buttons'>
+     <div class='customCheckbox'>       
+      <input type="checkbox"  name='statuses' [(ngModel)]='item.status' (click)='statusChange(item)'>
+      <span></span>
+     </div> 
+    <div class='delete' (click)='Delete(item)'></div>
     </div>
   </li>
 </ul>

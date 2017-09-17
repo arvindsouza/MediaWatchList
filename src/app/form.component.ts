@@ -46,12 +46,14 @@ export class FormComponent{
         this.form = fb.group({
             name: ['', Validators.required],
             category: [''],
+            status: ['']
         })
      }
 
      async onSubmit(value){
       //this.display = false;  
       this.mediaservice.add(value);
+      console.log(value);
       
     }
 }

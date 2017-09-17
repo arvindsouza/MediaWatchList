@@ -12,6 +12,10 @@
             <option value='TV'>TV</option>
             <option value="Game" >Game</option>
         </select>
+        <select formControlName = 'status'>
+            <option [ngValue]=true>Done</option>
+            <option [ngValue]=false>Pending</option>
+        </select>
         <button>Add</button>
  </form>
 </div>
