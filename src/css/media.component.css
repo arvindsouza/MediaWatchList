@@ -4,7 +4,7 @@
     display: flex;
     width: 200px;
     flex-direction: column;
-    background: #0B9B64;
+    background: #193A82;
     border: white;
     border-style: solid;
     margin: 10px;
@@ -33,9 +33,8 @@
         display: block;
         position: absolute;
         top: 0;
-        background-image: url('../assets/AppIcons_Checkbox.png');
+        background-image: url('../assets/Checks/AppIcons_Unchecked.png');
         background-size: contain; 
-        opacity: 0.5;    
         transition: 0.5s all;
         margin-top: 10px;
     }
@@ -51,7 +50,25 @@
     }
 
     input[type=checkbox]:checked ~ span{
-      opacity: 1;
+      animation: checkAnimation;
+      animation-duration: .3s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes checkAnimation{
+        0%{ background-image: url('../assets/Checks/AppIcons_Unchecked.png'); }
+        8%{ background-image: url('../assets/Checks/AppIcons_CheckAnimeA.png'); }
+        16%{ background-image: url('../assets/Checks/AppIcons_CheckAnimeB.png'); }
+        24%{ background-image: url('../assets/Checks/AppIcons_CheckAnimeC.png'); }
+        32%{ background-image: url('../assets/Checks/AppIcons_CheckAnimeD.png'); }
+        40%{ background-image: url('../assets/Checks/AppIcons_CheckAnimeE.png'); }
+        48%{ background-image: url('../assets/Checks/AppIcons_CheckAnimeF.png'); }
+        56%{ background-image: url('../assets/Checks/AppIcons_CheckAnimeG.png'); }
+        64%{ background-image: url('../assets/Checks/AppIcons_CheckAnimeH.png'); }
+        72%{ background-image: url('../assets/Checks/AppIcons_CheckAnimeI.png'); }
+        80%{ background-image: url('../assets/Checks/AppIcons_CheckAnimeJ.png'); }
+        88%{ background-image: url('../assets/Checks/AppIcons_CheckAnimeK.png'); }
+        100%{ background-image: url('../assets/Checks/AppIcons_CheckAnimeL.png'); }
     }
 
     h1{
@@ -87,7 +104,7 @@
         cursor: pointer;
         animation-name: trash;
         animation-duration: .4s;
-        animation-iteration-count: 2;
+        animation-iteration-count: 1;
     }
 
     .buttons{
@@ -105,13 +122,13 @@
 
 
     .search{
-        position: absolute;
+        position: fixed;
         width: 100px;
         right: 0;
         padding: 40px 40px 0 40px;
         height: 45px;
         animation: search;
-        animation-duration: 4s;
+        animation-duration: 2s;
         animation-fill-mode: forwards;
         opacity: 0;
     }
@@ -122,7 +139,7 @@
         width: 60px;
         height: 60px;
         background-size: cover;
-        z-index: 102;
+        z-index: 104;
     }
 
     .searchbox{
@@ -131,7 +148,7 @@
         left:20px;
         height: 25px;
         position: relative;
-        z-index: 101;
+        z-index: 103;
         border-radius: 10px;
         border:solid;
         border-color: #D36F0B;
@@ -165,6 +182,10 @@
         100% { opacity: 1 }
     }
 
-    @media screen and ( min-width: 768px ){
-        
+    @media screen and ( max-width: 768px ){
+         .search{
+             padding: 20px 0 0 0;
+             width:70px;
+             position: fixed;
+         }
     }

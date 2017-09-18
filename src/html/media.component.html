@@ -1,14 +1,17 @@
 
 <div class='search'>
   <div class='searchIcon'></div>
-  <input class='searchbox' [(ngModel)]='keyword' >    
+  <input class='searchbox' [(ngModel)]='keyword' placeholder="Name or Platform" >    
   <label>{{ keyword }}</label>
 </div>
 
 <ul class='contentList'>
-  <li class='mediaBoxes' *ngFor='let item of (mediaFiltered | search: keyword) '  [ngClass] = "{'test': $index == clickedindex}">
+  <li class='mediaBoxes' *ngFor='let item of keyword ? (mediaFiltered | search: keyword) : mediaFiltered '  [ngClass] = "{'test': $index == clickedindex}">
     <h1>{{ item.name }}</h1>
     <h2>{{ item.category }}</h2>
+    <div class='thePlatform' *ngIf='item.platform'>
+    <h2>Platform: {{ item.platform }}  </h2>  
+    </div>
     <div class='buttons'>
      <div class='customCheckbox'>       
       <input type="checkbox"  name='statuses' [(ngModel)]='item.status' (click)='statusChange(item)'>

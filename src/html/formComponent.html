@@ -1,17 +1,23 @@
+<div class='Title'>
+    <span>Add a new Item</span>
+    <span class='underline'></span>    
+   </div>
+  
 <div id='FormContainer' [@Init]='one' *ngIf='display'>
-
- <div class='Title'>
-  <span>Add a new Item</span>
-  <span class='underline'></span>
- </div>
-
+    
  <form id='reg' [formGroup]='form' (ngSubmit)='onSubmit(form.value)' >
         <input formControlName='name' type='text' placeholder="Name" >
-        <select formControlName='category' >
+        <select formControlName='category' [(ngModel)]='Cat'>
             <option value="Movie">Movie</option>
             <option value='TV'>TV</option>
             <option value="Game" >Game</option>
         </select>
+        <select  formControlName='platform' *ngIf='Cat == "Game"'>
+            <option>PC</option>
+            <option>Playstation</option>
+            <option>Nintendo</option>
+            <<option>XBox</option>
+         </select>
         <select formControlName = 'status'>
             <option [ngValue]=true>Done</option>
             <option [ngValue]=false>Pending</option>

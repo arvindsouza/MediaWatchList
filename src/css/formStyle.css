@@ -3,6 +3,8 @@
 
 :host{
     display: flex !important;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 input{
@@ -12,7 +14,7 @@ input{
     border: solid;
     border-color: #fff;
     border-radius: 10px;
-    background-color: #1F68DD;
+    background-color: #132f6b;
     color: #fff;
     opacity: 0.8;
 }
@@ -30,23 +32,25 @@ select{
  border: solid;
  border-color: #fff;
  border-radius: 10px;
- background-color: #1F68DD;
+ background-color: #132f6b;
  color: #fff;
  opacity: 0.8;
 }
 
 form{
-    display: flex;
+    max-width: 300px;
     flex-direction: column;
-    width: 300px;
-    
+    display: flex;
 }
 
 #FormContainer{
-    display: block;
-    padding-left: 20px;
+    display: flex;
     margin-top: 50px;
-    min-width: 100%;
+    flex-direction: column;  
+    padding: 10px;      
+    animation-name: formelements;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;    
 }
 
 span{
@@ -54,6 +58,9 @@ span{
     padding-bottom: 10px;
     font-family: 'Work Sans', sans-serif;
     color: #fff;
+    animation-name: formelements;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
 }
 
 .underline{
@@ -69,13 +76,20 @@ span{
 
 @keyframes underline{
     0% { width:0%; opacity: 0; }
-    100%{ width:95%; opacity: 1; }
+    100%{ width:100%; opacity: 1; }
+}
+
+@keyframes formelements{
+    0% { opacity: 0 }
+    100% { opacity: 1}
 }
 
 .Title{
+    width: 90%;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    position: absolute;
+    text-align: center;
 }
 
 button{
@@ -85,7 +99,7 @@ button{
     border-radius: 10px;
     border: solid;
     border-color: #fff;
-    background-color: #1F68DD;
+    background-color:#132f6b ;
     color: #fff;
     opacity: 0.8;
     transition: 0.3s all;
@@ -94,4 +108,12 @@ button{
 button:hover{
     opacity: .6;
     cursor: pointer;
+}
+
+input{
+    width: 250px;
+}
+
+ ::selection{
+    background: #0162FF;
 }

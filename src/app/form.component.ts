@@ -46,6 +46,7 @@ export class FormComponent{
         this.form = fb.group({
             name: ['', Validators.required],
             category: [''],
+            platform: [''],
             status: ['']
         })
      }

@@ -9,9 +9,8 @@ export class SearchPipe implements PipeTransform{
         if(pipeData){        
        return pipeData.filter((eachItem)=> {
            if(pipeModifier)
-             return eachItem['name'].toLowerCase().includes(pipeModifier.toLowerCase());
-             else
-             return pipeData;
+            return eachItem['name'].toLowerCase().includes(pipeModifier.toLowerCase()) ||
+            eachItem['platform'].toLowerCase().includes(pipeModifier.toLowerCase());
         });
     }
   }
