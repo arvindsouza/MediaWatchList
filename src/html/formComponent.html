@@ -3,7 +3,7 @@
     <span class='underline'></span>    
    </div>
   
-<div id='FormContainer' [@Init]='one' *ngIf='display'>
+<div id='FormContainer' *ngIf='display'>
     
  <form id='reg' [formGroup]='form' (ngSubmit)='onSubmit(form.value)' >
         <input formControlName='name' type='text' placeholder="Name" >
@@ -16,12 +16,13 @@
             <option>PC</option>
             <option>Playstation</option>
             <option>Nintendo</option>
-            <<option>XBox</option>
+            <option>XBox</option>
          </select>
         <select formControlName = 'status'>
             <option [ngValue]=true>Done</option>
             <option [ngValue]=false>Pending</option>
         </select>
-        <button>Add</button>
+        <button (click)='animation()'>Add</button>
+        <label class='Submitted'  [@Submit]='animate' *ngIf='hasBeenSubmitted'>Submitted!</label>
  </form>
 </div>

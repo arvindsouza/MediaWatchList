@@ -16,12 +16,10 @@ import 'rxjs/add/operator/toPromise';
     templateUrl: '../html/formComponent.html',
     styleUrls:['../css/formStyle.css'],
     animations:[
-        trigger('Init',[
-           state('one', style({
-               height: '165px'
-           })),
-           transition('void => *', [ style({height: '0px'}), animate('100ms') ]),
-           transition('* => void', [ animate('200ms'), style({height: '0px'})]) 
+        trigger('Submit',[
+            transition('*<=>*',[style({ opacity:'0' }),animate(
+                '.5s ease-in-out', style({ opacity: '1' })
+            )])
         ])
     ]
 })
@@ -32,6 +30,8 @@ export class FormComponent{
     form: FormGroup;
     display: boolean = true;
     medialist: MediaList;
+    hasBeenSubmitted: boolean = false;
+    animate: boolean = false;
 
     message = {
         'name':'',
@@ -52,9 +52,12 @@ export class FormComponent{
      }
 
      async onSubmit(value){
-      //this.display = false;  
       this.mediaservice.add(value);
-      console.log(value);
-      
+      this.hasBeenSubmitted = true;
+    }
+
+    animation(){
+        this.animate = !this.animate;
+        this.hasBeenSubmitted = true;
     }
 }
