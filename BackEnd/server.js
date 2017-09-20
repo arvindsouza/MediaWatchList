@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var mongo = require('mongodb').MongoClient;
 var objid = require('mongodb').ObjectID;
 
+const https = require('https');
+
 var database;
 
 
@@ -16,6 +18,17 @@ app.use(function(req, res, next){
 })
 
 app.post('/api/message', function(req, res){
+    let body = '';
+    https.get('https://www.googleapis.com/customsearch/v1?q='+ req.body.name + '+poster&cx=002034509201801121574%3Agjigc9llnne&key=AIzaSyCjDmKa9pJOvx7JioM1j8-5l-oowKRJ-rQ', result =>{
+        result.setEncoding('utf8');
+        result.on('data',d=>{
+          body+=d;
+          result.on('end',()=>{
+           JSON.parse(body);   
+            console.log(body.kind);   
+          })                      
+        });
+    });
     //res.sendStatus(200);
     database.collection('messages').insertOne(req.body);
     res.json(req.body);
