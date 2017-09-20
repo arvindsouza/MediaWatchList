@@ -29,6 +29,7 @@ export class AppComponent {
 
   course: string;
   state: string = 'inactive';
+  test: any;
 
   public selectedItem: string;
 

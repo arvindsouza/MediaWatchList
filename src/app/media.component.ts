@@ -37,13 +37,11 @@ export class MediaList{
                  var i = 0;
                  while(i<this.mediaFiltered.length){
                    if(this.mediaFiltered[i].category != this.medium ){
-                       console.log(this.mediaFiltered[i].status +(this.mediaFiltered[i].name) + 'counter: '+ i );
                        let index = this.mediaFiltered.indexOf(this.mediaFiltered[i]);
                        this.mediaFiltered.splice(index,1);
-                     
                    }
                    else
-                     i++;  
+                       i++;  
                 }
               }
               else{
