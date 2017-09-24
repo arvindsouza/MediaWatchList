@@ -3,10 +3,12 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongo = require('mongodb').MongoClient;
 var objid = require('mongodb').ObjectID;
+var GoogleAuth = require('google-auth-library');
 
 const https = require('https');
 
 var database;
+var userid;
 
 
 app.use(bodyParser.json());
@@ -61,6 +63,22 @@ app.post('/api/update', function(req, res){
         console.log('updated');
         res.json(req.body);
     })
+})
+
+app.post('/api/clienttoken', function(req, res){
+    console.log(req.body);
+    var auth = new GoogleAuth;
+    var cid= '99080391518-sgfc9sur80b8mgv3g4jt5jbcg4p15f1v.apps.googleusercontent.com';
+    var client = new auth.OAuth2(cid, '', '');
+    client.verifyIdToken(
+        req.body.tokens,
+        cid,
+        function(e, login){
+            var payload = login.getPayload();
+            userid = payload['sub'];
+        console.log('success'+ req.body.tokens + 'Payload: '+ userid);
+        }
+    )
 })
 
 

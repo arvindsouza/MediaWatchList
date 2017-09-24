@@ -13,6 +13,7 @@ import { LoginRegComponent } from './Login.component';
 import { GoogleSignIn } from './Login.component'
 
 import { MediaService } from './mediaItems.service';
+import { LoginRegService } from './LoginReg.service';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -23,7 +24,7 @@ import 'rxjs/add/operator/toPromise';
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule, HttpModule, routing
   ],
-  providers: [MediaService],
+  providers: [MediaService, LoginRegService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

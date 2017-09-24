@@ -1,13 +1,13 @@
 import { Component, Inject, Injectable, AfterViewInit, ElementRef } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { MediaList } from './media.component';
 
 import { LoginRegService } from './LoginReg.service';
+import { MediaList } from './media.component'
 
 import 'rxjs/add/operator/toPromise';
 declare const gapi: any;
@@ -31,17 +31,16 @@ export class LoginRegComponent{
             pwd: []
         })
     }
-
     
 }
 
 @Component({
     selector: 'googleSignIn',
-    template: '<button id="TheButton" >Google Sign In</button>'
+    template: '<button id="gsignin" >Google Sign In</button>'
 })
 
-export class GoogleSignIn implements AfterViewInit  {
-    private clientId = '99080391518-sgfc9sur80b8mgv3g4jt5jbcg4p15f1v.apps.googleusercontent.com';
+export class GoogleSignIn implements AfterViewInit {
+  /*  private clientId = '99080391518-sgfc9sur80b8mgv3g4jt5jbcg4p15f1v.apps.googleusercontent.com';
     public auth2: any;
     private scope = [
         'profile',
@@ -54,26 +53,23 @@ export class GoogleSignIn implements AfterViewInit  {
               that.auth2 = gapi.auth2.init({
                client_id : that.clientId,
                cookiepolicy: 'single_host_origin',
-               scope: that.scope
+               scope: that.scope,
               });
-              that.attachSignin(that.element.nativeElement.firstChild);
+           //   that.attachSignin(that.element.nativeElement.firstChild);
+               that.logreg.attachSignin(document.getElementById('gsignin'));
           });
         }
+*/     
 
-        public attachSignin(element){
-          let that = this;
-          this.auth2.attachClickHandler(element, {}, function( googleUser ){
-              let profile = googleUser.getBasicProfile();
-              console.log('Name: ' + profile.getName());
-          })
-        }
-    
         constructor(
-            private element: ElementRef
-        ){}
+            private element: ElementRef,
+            private route: Router,
+            private http: Http,
+            private logreg: LoginRegService
+        ){        }
 
         ngAfterViewInit(){
-            this.googleInit();
+            this.logreg.googleInit();
         }
     
 }

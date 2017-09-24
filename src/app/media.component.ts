@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
-import { DomSanitizer } from '@angular/platform-browser';
+import { Http } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { MediaService } from './mediaItems.service';
+import { LoginRegService } from './LoginReg.service';
 ;
 @Component({
     selector: 'media',
@@ -11,18 +13,19 @@ import { MediaService } from './mediaItems.service';
 })
 
 export class MediaList {
-
     media: any;
     medium: any;
     mediaFiltered: any;
     response: any;
     clickedindex: any;
     keyword: any;
+    loggedIn = this.logreg.loggedin;
 
     constructor(private activatedroute: ActivatedRoute,
         private mediaitemservice: MediaService,
-        private sanitization: DomSanitizer
-    ) { }
+        private logreg: LoginRegService        
+    ) { 
+    }
 
     async ngOnInit() {
         this.response = await this.mediaitemservice.get();
@@ -68,5 +71,9 @@ export class MediaList {
         this.mediaFiltered.splice(index, 1);
     }
 
+    logout(){
+        this.logreg.signOut();
+        this.loggedIn = this.logreg.loggedin;        
+    }
 
 }

@@ -3,6 +3,8 @@
   <input class='searchbox' [(ngModel)]='keyword' placeholder="Name or Platform">
 </div>
 
+<button *ngIf='loggedIn' (click)='logout()' >Log Out</button>
+
 <ul class='contentList'>
   <li class='mediaBoxes' *ngFor='let item of keyword ? (mediaFiltered | search: keyword) : mediaFiltered ' [ngClass]="{'test': $index == clickedindex}">
     <div class='Top'>
