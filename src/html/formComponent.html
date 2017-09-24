@@ -1,28 +1,53 @@
 <div class='Title'>
     <span>Add a new Item</span>
-    <span class='underline'></span>    
-   </div>
-  
+    <span class='underline'></span>
+    <span class='disclaimer'>If Item isn't immediately visible please refresh after a few seconds</span>
+</div>
+
 <div id='FormContainer' *ngIf='display'>
-    
- <form id='reg' [formGroup]='form' (ngSubmit)='onSubmit(form.value)' >
-        <input formControlName='name' type='text' placeholder="Name" >
+
+    <form id='reg' [formGroup]='form' (ngSubmit)='onSubmit(form.value)'>
+        <input formControlName='name' type='text' placeholder="Name">
         <select formControlName='category' [(ngModel)]='Cat'>
             <option value="Movie">Movie</option>
             <option value='TV'>TV</option>
             <option value="Game" >Game</option>
         </select>
-        <select  formControlName='platform' *ngIf='Cat == "Game"'>
+        <select formControlName='platform' *ngIf='Cat == "Game"'>
             <option>PC</option>
             <option>Playstation</option>
             <option>Nintendo</option>
             <option>XBox</option>
          </select>
-        <select formControlName = 'status'>
+        <select formControlName='status'>
             <option [ngValue]=true>Done</option>
             <option [ngValue]=false>Pending</option>
         </select>
-        <button (click)='animation()'>Add</button>
-        <label class='Submitted'  [@Submit]='animate' *ngIf='hasBeenSubmitted'>Submitted!</label>
- </form>
+        <button (click)='animation()'>
+         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                width="406.479px" height="409.479px" viewBox="0 0 406.479 409.479" enable-background="new 0 0 406.479 409.479"
+                xml:space="preserve">
+           <g id="Layer_1">
+               <g>
+                   
+                       <circle class='outline' fill="none" stroke="#EF0707" stroke-width="8" stroke-miterlimit="10" stroke-dasharray="82.8025,82.8025" cx="207.293" cy="207.721" r="184.491"/>
+               </g>
+               <circle class='white' fill="#193A82" cx="207.293" cy="207.721" r="159"/>
+               <circle class='darkRed' fill="#AF0B0B" cx="207.293" cy="207.721" r="142"/>
+               <circle class='midRed' fill="#CC1212" cx="207.294" cy="207.722" r="104.745"/>
+               <circle class='lightRed' fill="#EF0707" cx="207.293" cy="207.721" r="76.834"/>
+           </g>
+         </svg>  
+        </button>
+        <label class='Submitted'>
+           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                width="406.479px" height="409.479px" viewBox="0 0 406.479 409.479" enable-background="new 0 0 406.479 409.479"
+                xml:space="preserve">
+           <g id="Layer_1"  >
+               <circle fill="#193A82" cx="207.293" cy="208.798" r="159"/>
+               <circle [@Submit]='animate' class='green' fill="#56E81A" cx="207.293" cy="208.798" r="142"/>
+           </g>
+           </svg>
+        </label>
+    </form>
 </div>

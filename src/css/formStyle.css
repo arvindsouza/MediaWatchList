@@ -5,6 +5,7 @@
     display: flex !important;
     justify-content: center;
     margin-top: 30px;
+    flex-direction: column;
 }
 
 input{
@@ -38,19 +39,19 @@ select{
 }
 
 form{
-    max-width: 300px;
     flex-direction: column;
     display: flex;
+    padding: 0 10% 0 10%;
 }
 
 #FormContainer{
     display: flex;
-    margin-top: 50px;
     flex-direction: column;  
     padding: 10px;      
     animation-name: formelements;
     animation-duration: 4s;
-    animation-fill-mode: forwards;    
+    animation-fill-mode: forwards;  
+    justify-content: center;  
 }
 
 span{
@@ -85,37 +86,98 @@ span{
 }
 
 .Title{
-    width: 90%;
+    padding: 0 20px 0 20px;
     display: flex;
     flex-direction: column;
-    position: absolute;
     text-align: center;
 }
 
 button{
-    width: 80px;
     margin:0 auto;
     height: 30px;
-    border-radius: 10px;
-    border: solid;
-    border-color: #fff;
-    background-color:#132f6b ;
-    color: #fff;
-    opacity: 0.8;
+    opacity: 1;
     transition: 0.3s all;
+    background-color: #193A82;
+    border: none;
 }
-
 button:hover{
-    opacity: .6;
     cursor: pointer;
-}
-
-input{
-    width: 250px;
 }
 
  ::selection{
     background: #0162FF;
 }
 
-.Submitted{}
+.disclaimer{
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+/* Big Red Button */
+
+svg{
+    width: 100px;
+    height: 100px;
+}
+
+.lightRed, .darkRed, .midRed{
+    transition: .2s all;
+}
+
+.outline{
+    transition: .5s all;
+    r: 120;
+}
+
+button:hover .outline{
+    r: 184.491;
+    animation: rotate;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes rotate{
+    0%{ transform: rotate(0deg); transform-origin: 50% 50%; }
+    100%{ transform: rotate(-360deg); transform-origin: 50% 50%;}
+}
+
+button:active .lightRed{
+    r: 62;
+}
+
+button:active .midRed{
+    r: 90;
+}
+
+button:active .darkRed{
+    r: 128;
+}
+
+.white{
+    fill:#132f6b;
+}
+
+/*Green Light*/
+
+label svg{
+    width: 30px;
+    height: 30px;
+}
+
+.green{
+    fill: #BCBCBC;
+}
+
+.green.animate{
+    animation: light;
+    animation-duration: .2s;
+    transition: 1s all;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes light{
+0%{  fill: #BCBCBC; }
+100%{ fill: #56E81A ; }
+}

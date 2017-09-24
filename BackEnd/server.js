@@ -19,19 +19,23 @@ app.use(function(req, res, next){
 
 app.post('/api/message', function(req, res){
     let body = '';
-    https.get('https://www.googleapis.com/customsearch/v1?q='+ req.body.name + '+poster&cx=002034509201801121574%3Agjigc9llnne&key=AIzaSyCjDmKa9pJOvx7JioM1j8-5l-oowKRJ-rQ', result =>{
-        result.setEncoding('utf8');
-        result.on('data',d=>{
+    var Url;
+    var searchterm = req.body.name.replace(/ /, '+').replace(/&/, 'and');
+     https.get('https://www.googleapis.com/customsearch/v1?q='+ searchterm + '+' + req.body.category + '+poster&cx=003341936895423907508%3Axwtpel8xhue&key=AIzaSyC-3YKB3dDUphIMU8Xv3rcpUTVJRQU09yc', result =>{
+        result.on('data',function(d){
           body+=d;
-          result.on('end',()=>{
-           JSON.parse(body);   
-            console.log(body.kind);   
-          })                      
-        });
-    });
-    //res.sendStatus(200);
-    database.collection('messages').insertOne(req.body);
-    res.json(req.body);
+          });
+          
+        result.on('end', ()=>{
+           var thejson = JSON.parse(body)
+           Url = thejson.items[0].pagemap.cse_image[0].src;
+           req.body.imageUrl = Url;
+           console.log(req.body);
+           database.collection('messages').insertOne(req.body);
+           res.json(req.body);
+        })
+       // imageUrl[0].imgSrc = Url; 
+        }).end();     
 })
 
 

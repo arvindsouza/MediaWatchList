@@ -1,22 +1,26 @@
-
 <div class='search'>
   <div class='searchIcon'></div>
-  <input class='searchbox' [(ngModel)]='keyword' placeholder="Name or Platform" >    
+  <input class='searchbox' [(ngModel)]='keyword' placeholder="Name or Platform">
 </div>
 
 <ul class='contentList'>
-  <li class='mediaBoxes' *ngFor='let item of keyword ? (mediaFiltered | search: keyword) : mediaFiltered '  [ngClass] = "{'test': $index == clickedindex}">
-    <h1>{{ item.name }}</h1>
-    <h2>{{ item.category }}</h2>
+  <li class='mediaBoxes' *ngFor='let item of keyword ? (mediaFiltered | search: keyword) : mediaFiltered ' [ngClass]="{'test': $index == clickedindex}">
+    <div class='Top'>
+      <img *ngIf='item.imageUrl' [width]='80' [src]='item.imageUrl'>
+      <div class='Details'>
+        <h1>{{ item.name }}</h1>
+        <h2>{{ item.category }}</h2>
+      </div>
+    </div>
     <div class='thePlatform' *ngIf='item.platform'>
-    <h2>Platform: {{ item.platform }}  </h2>  
+      <h2>Platform: {{ item.platform }} </h2>
     </div>
     <div class='buttons'>
-     <div class='customCheckbox'>       
-      <input type="checkbox"  name='statuses' [(ngModel)]='item.status' (click)='statusChange(item)'>
-      <span></span>
-     </div> 
-    <div class='delete' (click)='Delete(item)'></div>
+      <div class='customCheckbox'>
+        <input type="checkbox" name='statuses' [(ngModel)]='item.status' (click)='statusChange(item)'>
+        <span></span>
+      </div>
+      <div class='delete' (click)='Delete(item)'></div>
     </div>
   </li>
 </ul>

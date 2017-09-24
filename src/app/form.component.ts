@@ -14,18 +14,18 @@ import 'rxjs/add/operator/toPromise';
 @Component({
     selector: 'theForm',
     templateUrl: '../html/formComponent.html',
-    styleUrls:['../css/formStyle.css'],
-    animations:[
-        trigger('Submit',[
-            transition('*<=>*',[style({ opacity:'0' }),animate(
-                '.5s ease-in-out', style({ opacity: '1' })
-            )])
+    styleUrls: ['../css/formStyle.css'],
+    animations: [
+        trigger('Submit', [
+            transition('*<=>*', animate(
+                '1s ease-out', style({ fill: '#56E81A' })
+            ))
         ])
     ]
 })
 
 
-export class FormComponent{
+export class FormComponent {
 
     form: FormGroup;
     display: boolean = true;
@@ -34,29 +34,29 @@ export class FormComponent{
     animate: boolean = false;
 
     message = {
-        'name':'',
-        'something':''
+        'name': '',
+        'something': ''
     }
 
     constructor(
         @Inject(FormBuilder) fb: FormBuilder,
         private http: Http,
         private mediaservice: MediaService
-    ){
+    ) {
         this.form = fb.group({
             name: ['', Validators.required],
             category: [''],
             platform: [''],
             status: ['']
         })
-     }
-
-     async onSubmit(value){
-      this.mediaservice.add(value);
-      this.hasBeenSubmitted = true;
     }
 
-    animation(){
+    async onSubmit(value) {
+        this.mediaservice.add(value);
+        this.hasBeenSubmitted = true;
+    }
+
+    animation() {
         this.animate = !this.animate;
         this.hasBeenSubmitted = true;
     }
