@@ -3,6 +3,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { MediaList } from './media.component';
@@ -41,14 +42,19 @@ export class FormComponent {
     constructor(
         @Inject(FormBuilder) fb: FormBuilder,
         private http: Http,
-        private mediaservice: MediaService
+        private mediaservice: MediaService,
+        private route: Router
     ) {
         this.form = fb.group({
             name: ['', Validators.required],
             category: [''],
             platform: [''],
             status: ['']
-        })
+        });
+
+        if(sessionStorage['loggedin']=='false'){
+            this.route.navigate(['/Login-Register']);
+          }
     }
 
     async onSubmit(value) {

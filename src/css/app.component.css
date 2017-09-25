@@ -8,7 +8,7 @@
 #nav{
   display: flex;
   flex-direction: column;
-  width: 100px;
+  width: 200px;
   background-color: #EF913C;
   height: 100%;
   z-index: 100;
@@ -20,6 +20,7 @@
   overflow: scroll;
   z-index: 99;
   position: relative;
+  padding-left: 10px;
 }
 
 .options{

@@ -3,12 +3,15 @@
   <input class='searchbox' [(ngModel)]='keyword' placeholder="Name or Platform">
 </div>
 
-<button *ngIf='loggedIn' (click)='logout()' >Log Out</button>
+<button *ngIf='returnLoggedin()' (click)='logout()' >Log Out</button>
 
 <ul class='contentList'>
   <li class='mediaBoxes' *ngFor='let item of keyword ? (mediaFiltered | search: keyword) : mediaFiltered ' [ngClass]="{'test': $index == clickedindex}">
     <div class='Top'>
+      <div class='imagebox'>
       <img *ngIf='item.imageUrl' [width]='80' [src]='item.imageUrl'>
+      <span class='rating'> {{ item.therating }}/10 </span>
+    </div>
       <div class='Details'>
         <h1>{{ item.name }}</h1>
         <h2>{{ item.category }}</h2>

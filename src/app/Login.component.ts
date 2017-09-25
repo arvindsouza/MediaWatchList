@@ -66,10 +66,10 @@ export class GoogleSignIn implements AfterViewInit {
             private route: Router,
             private http: Http,
             private logreg: LoginRegService
-        ){        }
+        ){    }
 
         ngAfterViewInit(){
-            this.logreg.googleInit();
+            this.logreg.googleInit('gsignin');
         }
     
 }

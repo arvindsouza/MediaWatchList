@@ -9,7 +9,7 @@ declare const gapi: any;
 @Injectable()
 export class LoginRegService {
 
-    loggedin = false;
+    loggedin: boolean;
     public auth2: any;
     private clientId = '99080391518-sgfc9sur80b8mgv3g4jt5jbcg4p15f1v.apps.googleusercontent.com';
     private scope = [
@@ -17,10 +17,11 @@ export class LoginRegService {
         'email',
     ].join(' ');
     token: any = {
-        tokens: ''
+        tokens: '',
+        logged: ''
     };
 
-    googleInit() {
+    googleInit(item) {
         let that = this;
         gapi.load('auth2', function () {
             that.auth2 = gapi.auth2.init({
@@ -29,7 +30,7 @@ export class LoginRegService {
                 scope: that.scope,
             });
             //   that.attachSignin(that.element.nativeElement.firstChild);
-            that.attachSignin(document.getElementById('gsignin'));
+            that.attachSignin(document.getElementById(item));
         });
     }
 
@@ -39,9 +40,9 @@ export class LoginRegService {
             let profile = googleUser.getBasicProfile();
             console.log('Name: ' + profile.getName());
              that.token.tokens = googleUser.getAuthResponse().id_token;
-            console.log(that.token.tokens);
-            that.http.post('http://localhost:5000/api/clienttoken', that.token).toPromise();
-            that.loggedin = true;
+             that.token.logged = true;
+            that.http.post('http://localhost:5000/api/clienttoken', that.token).toPromise();   
+            sessionStorage.setItem('loggedin', 'true');         
         })
     }
 
@@ -50,8 +51,9 @@ export class LoginRegService {
         this.auth2 = gapi.auth2.getAuthInstance();
         this.auth2.signOut().then(
             ()=>{
-                console.log('Logged Out');
-                that.loggedin = false;
+                that.token.logged = false;
+                that.http.post('http://localhost:5000/api/clienttoken', that.token).toPromise();                   
+                sessionStorage.setItem('loggedin', 'false');
             }
         )
         this.auth2.disconnect();
@@ -60,7 +62,5 @@ export class LoginRegService {
     constructor(
         private http: Http,
 
-    ) {
-
-    }
+    ) {}
 }

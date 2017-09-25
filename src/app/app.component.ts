@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { trigger, state, style, transition, animate, query, group } from '@angular/animations';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 
 
 @Component({
@@ -42,6 +42,11 @@ export class AppComponent {
   getstate(outlet) {
     return outlet.activatedRouteData.state;
   }
+
+
+  constructor(
+    private theroute: Router
+  ){}
 
 }
 

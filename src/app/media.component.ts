@@ -19,12 +19,16 @@ export class MediaList {
     response: any;
     clickedindex: any;
     keyword: any;
-    loggedIn = this.logreg.loggedin;
+    loggedIn: boolean;
 
     constructor(private activatedroute: ActivatedRoute,
         private mediaitemservice: MediaService,
-        private logreg: LoginRegService        
+        private logreg: LoginRegService,
+        private route: Router      
     ) { 
+        if(sessionStorage['loggedin']=='false'){
+            this.route.navigate(['/Login-Register']);
+          }
     }
 
     async ngOnInit() {
@@ -71,9 +75,19 @@ export class MediaList {
         this.mediaFiltered.splice(index, 1);
     }
 
+    returnLoggedin(){
+        if(sessionStorage['loggedin']=='true'){
+            this.loggedIn = true;
+        }
+        else
+        this.loggedIn = false;
+
+        return this.loggedIn;
+    }
+
     logout(){
         this.logreg.signOut();
-        this.loggedIn = this.logreg.loggedin;        
+       // this.returnLoggedin();
     }
 
 }
