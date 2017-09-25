@@ -10,7 +10,7 @@
     <div class='Top'>
       <div class='imagebox'>
       <img *ngIf='item.imageUrl' [width]='80' [src]='item.imageUrl'>
-      <span class='rating'> {{ item.therating }}/10 </span>
+      <span class='rating' *ngIf = 'item.therating' > {{ item.therating }}/10 </span>
     </div>
       <div class='Details'>
         <h1>{{ item.name }}</h1>

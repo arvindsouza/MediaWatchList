@@ -15,7 +15,7 @@
 }
 
 #mainApp{
-  background-color:#193A82;
+  background-color:#e0e0e0;
   width: 100%;
   overflow: scroll;
   z-index: 99;
@@ -38,7 +38,7 @@ a{
 }
 
 img{
-  width: 60px;
+  width: 70px;
   -webkit-transition: .1s all;
 }
 img:hover{

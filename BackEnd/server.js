@@ -31,7 +31,7 @@ app.post('/api/message', function (req, res) {
         result.on('end', () => {
             var thejson = JSON.parse(body)
             Url = thejson.items[0].pagemap.cse_image[0].src;
-            rating = thejson.items[0].pagemap.aggregaterating[0].ratingvalue;
+             thejson.items[0].pagemap.aggregaterating ? rating = thejson.items[0].pagemap.aggregaterating[0].ratingvalue : rating = '' ;
             req.body.imageUrl = Url;
             req.body.userID = userid;
             req.body.therating = rating;
@@ -77,9 +77,14 @@ app.post('/api/clienttoken', function (req, res) {
             req.body.tokens,
             cid,
             function (e, login) {
+                if(e){
+                    console.log(e)
+                }
+                else{
                 var payload = login.getPayload();
                 userid = payload['sub'];
                 console.log('success' + req.body.tokens + 'Payload: ' + userid);
+                }
             }
         )
     }
