@@ -41,6 +41,10 @@ img{
   width: 70px;
   -webkit-transition: .1s all;
 }
-img:hover{
-  width: 65px;
+
+.options span{
+  background-color: #fff;
+  height:1px;
+  margin: 0 50px 0 50px;
+  display: block;
 }
