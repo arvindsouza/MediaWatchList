@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './landing.component';
 import { MediaList } from './media.component';
 
 import { MediaService } from './mediaItems.service';

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Http } from '@angular/http';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './Landing.component';
 
 import { LoginRegService } from './LoginReg.service';
 import { MediaList } from './media.component'
@@ -36,7 +36,7 @@ export class LoginRegComponent{
 
 @Component({
     selector: 'googleSignIn',
-    template: '<button id="gsignin" >Google Sign In</button>'
+    template: '<a id="gsignin"  >Google Sign In</a>'
 })
 
 export class GoogleSignIn implements AfterViewInit {

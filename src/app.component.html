@@ -1,0 +1,17 @@
+<div id='nav'>
+  <ul class='options'>
+    <li><a routerLink='/Movie'><img src='../assets/AppIconsGrey_Movies.png'></a></li>
+    <span></span>
+    <li><a routerLink='/TV'><img src='../assets/AppIconsGrey_TV.png' ></a></li>
+    <span></span>    
+    <li><a routerLink='/Game'><img src='../assets/AppIconsGrey_Games.png' ></a></li>
+    <span></span>    
+    <li><a routerLink='/add'><img src='../assets/AppIconsGrey_Add.png' ></a></li>
+    <span></span>    
+    <li><a routerLink='/Login-Register' >Login/Registration</a></li>
+  </ul>
+</div>
+
+<div id='mainApp' [@routerTransition]='getstate(o)'>
+  <router-outlet #o='outlet'></router-outlet>
+</div>

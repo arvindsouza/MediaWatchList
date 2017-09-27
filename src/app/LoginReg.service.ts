@@ -1,5 +1,6 @@
 import { Http, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
@@ -9,7 +10,7 @@ declare const gapi: any;
 @Injectable()
 export class LoginRegService {
 
-    loggedin: boolean;
+    loggedin: boolean = false;
     public auth2: any;
     private clientId = '99080391518-sgfc9sur80b8mgv3g4jt5jbcg4p15f1v.apps.googleusercontent.com';
     private scope = [
@@ -42,7 +43,8 @@ export class LoginRegService {
              that.token.tokens = googleUser.getAuthResponse().id_token;
              that.token.logged = true;
             that.http.post('http://localhost:5000/api/clienttoken', that.token).toPromise();   
-            sessionStorage.setItem('loggedin', 'true');         
+            sessionStorage.setItem('loggedin', 'true');      
+            that.route.navigate(['/app']);            
         })
     }
 
@@ -61,6 +63,6 @@ export class LoginRegService {
 
     constructor(
         private http: Http,
-
+        private route: Router
     ) {}
 }

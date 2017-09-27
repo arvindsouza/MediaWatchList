@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import { MediaService } from './mediaItems.service';
 import { LoginRegService } from './LoginReg.service';
-;
+
 @Component({
     selector: 'media',
     templateUrl: '../html/media.component.html',

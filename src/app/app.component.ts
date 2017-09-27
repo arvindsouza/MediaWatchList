@@ -22,8 +22,12 @@ import { ActivatedRoute, Router } from '@angular/router'
   ]
 })
 
-export class AppComponent {
+export class LandingPage {
+   potato: any ;
 
+  ngOnInit(){
+    sessionStorage['loggedin'] ? this.potato = true:sessionStorage.setItem('loggedin', 'false');
+  }
 
   title = 'app';
 
